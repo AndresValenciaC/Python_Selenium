@@ -1,0 +1,1 @@
+✅ Test checkout information title passed successfully from TestCheckoutInformationPage - Checkout: Your Information

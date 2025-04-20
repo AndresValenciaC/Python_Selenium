@@ -1,0 +1,5 @@
+✅ Verified cart page title: Your Cart
+✅ Initial 6  products in cart: ['Sauce Labs Bike Light', 'Sauce Labs Backpack', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket']
+Product to remove: Sauce Labs Bike Light
+✅ Final 5 products in cart: ['Sauce Labs Backpack', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket']
+✅ Product Sauce Labs Bike Light removed from ['Sauce Labs Backpack', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket']

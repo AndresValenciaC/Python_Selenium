@@ -1,0 +1,8 @@
+✅ Products page title verified
+✅ Cart page title verified
+✅ Selected product- Sauce Labs Bolt T-Shirt from products page is in ['Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Backpack', 'Sauce Labs Bike Light'] cart page
+✅ Selected product- Sauce Labs Fleece Jacket from products page is in ['Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Backpack', 'Sauce Labs Bike Light'] cart page
+✅ Selected product- Test.allTheThings() T-Shirt (Red) from products page is in ['Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Backpack', 'Sauce Labs Bike Light'] cart page
+✅ Selected product- Sauce Labs Onesie from products page is in ['Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Backpack', 'Sauce Labs Bike Light'] cart page
+✅ Selected product- Sauce Labs Backpack from products page is in ['Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Backpack', 'Sauce Labs Bike Light'] cart page
+✅ Selected product- Sauce Labs Bike Light from products page is in ['Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Backpack', 'Sauce Labs Bike Light'] cart page

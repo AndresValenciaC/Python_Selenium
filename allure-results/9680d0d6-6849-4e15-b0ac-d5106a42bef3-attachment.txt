@@ -1,0 +1,2 @@
+✅ Test test_checkout_overview_items_validation passed successfully from TestCheckoutOverviewPage - 1 items in cart - 1 items in checkout
+✅ Test item 'Sauce Labs Onesie' passed successfully from TestCheckoutOverviewPage - found in checkout overview items - ['Sauce Labs Onesie']

@@ -1,0 +1,3 @@
+test_checkout_overview_items_validation function
+✅ Test test_checkout_overview_items_validation passed successfully from TestCheckoutOverviewPage - 1 items in cart - 1 items in checkout
+✅ Test item 'Test.allTheThings() T-Shirt (Red)' passed successfully from TestCheckoutOverviewPage - found in checkout overview items - ['Test.allTheThings() T-Shirt (Red)']

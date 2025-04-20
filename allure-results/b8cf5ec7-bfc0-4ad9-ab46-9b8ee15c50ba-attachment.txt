@@ -1,0 +1,1 @@
+✅ Test test_fill_information_form passed successfully from TestCheckoutInformationPage

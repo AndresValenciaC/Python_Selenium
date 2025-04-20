@@ -1,0 +1,4 @@
+✅ Test test_checkout_overview_items_validation passed successfully from TestCheckoutOverviewPage - 3 items in cart - 3 items in checkout
+✅ Test item 'Sauce Labs Backpack' passed successfully from TestCheckoutOverviewPage - found in checkout overview items - ['Sauce Labs Backpack', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Fleece Jacket']
+✅ Test item 'Test.allTheThings() T-Shirt (Red)' passed successfully from TestCheckoutOverviewPage - found in checkout overview items - ['Sauce Labs Backpack', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Fleece Jacket']
+✅ Test item 'Sauce Labs Fleece Jacket' passed successfully from TestCheckoutOverviewPage - found in checkout overview items - ['Sauce Labs Backpack', 'Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Fleece Jacket']

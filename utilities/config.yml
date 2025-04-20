@@ -1,0 +1,6 @@
+login_url: "https://www.saucedemo.com/?ref=hackernoon.com"
+username: "standard_user"
+password: "secret_sauce"
+first_name: "John"
+last_name: "Doe"
+zip_code: "12345"

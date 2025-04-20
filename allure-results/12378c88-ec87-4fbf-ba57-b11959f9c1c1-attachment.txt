@@ -1,0 +1,3 @@
+✅ Products page title verified
+✅ Cart page title verified
+✅ Selected product- Sauce Labs Backpack from products page is in ['Sauce Labs Backpack'] cart page
