@@ -2,3 +2,5 @@ selenium==4.30.0
 pytest==8.3.5
 allure-pytest==2.14.0
 pyyaml==6.02
+flake8==7.2.0
+autoflake==2.3.1

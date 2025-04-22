@@ -3,10 +3,11 @@ This module contains the ProductPage class,
 which is used to interact with the product page
 """
 
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 from locators.product_locators import ProductLocators
 from utilities.random_web_element_func import random_web_element
 

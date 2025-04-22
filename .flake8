@@ -1,0 +1,12 @@
+[flake8]
+max-line-length = 88
+extend-ignore = E203, W503
+exclude = .git, __pycache__, venv/, .venv/, build/, dist/
+per-file-ignores =
+    tests/*:S101
+    page_objects/*:E501
+    tests/*:E501
+    conftest.py:F401
+max-complexity = 10
+select = B,C,E,F,W,T4,B9
+statistics = True

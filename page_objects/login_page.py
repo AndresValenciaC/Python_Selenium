@@ -3,8 +3,9 @@ This module contains the LoginPage class,
 which is used to interact with the login page
 """
 
-from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.remote.webdriver import WebDriver
+
 from locators.login_locators import LoginLocators
 
 

@@ -1,12 +1,14 @@
 """Page object for the cart page"""
 
+import random
+
+from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 from locators.cart_products_locators import CartProductsLocators
 from utilities.random_web_element_func import random_web_element
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import random
 
 
 class CartPage:

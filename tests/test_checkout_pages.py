@@ -1,15 +1,16 @@
 """Test the checkout pages"""
 
 import pytest
-from utilities.config import get_driver, USERNAME, PASSWORD
-from page_objects.login_page import LoginPage
-from page_objects.product_page import ProductPage
+
+from locators.checkout_locators import CheckoutLocators
 from page_objects.cart_page import CartPage
+from page_objects.checkout_complete_page import CheckoutCompletePage
 from page_objects.checkout_information_page import CheckoutInformationPage
 from page_objects.checkout_overview_page import CheckoutOverviewPage
-from page_objects.checkout_complete_page import CheckoutCompletePage
-from locators.checkout_locators import CheckoutLocators
-from utilities.config import FIRST_NAME, LAST_NAME, ZIP_CODE
+from page_objects.login_page import LoginPage
+from page_objects.product_page import ProductPage
+from utilities.config import (FIRST_NAME, LAST_NAME, PASSWORD, USERNAME,
+                              ZIP_CODE, get_driver)
 
 
 @pytest.fixture(scope="function")

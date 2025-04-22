@@ -3,6 +3,7 @@ This module contains locators for the login page
 """
 
 from selenium.webdriver.common.by import By
+
 from utilities.config import LOGIN_URL
 
 

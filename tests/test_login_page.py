@@ -2,11 +2,12 @@
 This module contains tests for the login page
 """
 
-import pytest
 import allure
+import pytest
+
 from page_objects.login_page import LoginPage
 from page_objects.product_page import ProductPage
-from utilities.config import get_driver, USERNAME, PASSWORD
+from utilities.config import PASSWORD, USERNAME, get_driver
 
 
 @pytest.mark.parametrize(

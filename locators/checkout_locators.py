@@ -49,3 +49,4 @@ class CheckoutLocators:
 
     THANK_YOU_MESSAGE = (By.XPATH, "//h2[@class='complete-header']")
     BACK_HOME_BUTTON = (By.XPATH, "//button[@data-test='back-to-products']")
+

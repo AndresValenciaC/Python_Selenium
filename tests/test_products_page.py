@@ -3,10 +3,11 @@ This module contains tests for the page products
 """
 
 import pytest
-from utilities.config import get_driver, USERNAME, PASSWORD
+
+from page_objects.cart_page import CartPage
 from page_objects.login_page import LoginPage
 from page_objects.product_page import ProductPage
-from page_objects.cart_page import CartPage
+from utilities.config import PASSWORD, USERNAME, get_driver
 
 
 @pytest.fixture
