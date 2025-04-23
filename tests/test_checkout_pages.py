@@ -2,7 +2,6 @@
 
 import pytest
 
-from locators.checkout_locators import CheckoutLocators
 from page_objects.cart_page import CartPage
 from page_objects.checkout_complete_page import CheckoutCompletePage
 from page_objects.checkout_information_page import CheckoutInformationPage

@@ -8,7 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 from locators.cart_products_locators import CartProductsLocators
-from utilities.random_web_element_func import random_web_element
 
 
 class CartPage:
