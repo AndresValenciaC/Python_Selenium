@@ -8,6 +8,12 @@ on:
     branches:
       - test
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  actions: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -57,10 +63,12 @@ jobs:
           pytest --alluredir=./allure-results
 
       - name: Upload Allure results
-        uses: actions/upload-artifact@v3
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
           name: allure-results
           path: allure-results
+          retention-days: 30
 
       - name: Generate Allure report
         uses: simple-elf/allure-report-action@master
