@@ -2,6 +2,7 @@
 This module contains tests for the page products
 """
 
+import allure
 import pytest
 
 from page_objects.cart_page import CartPage
@@ -37,6 +38,8 @@ def cart_page(driver):
 
 
 @pytest.fixture
+@allure.epic("E-commerce Application - Products Page")
+@allure.feature("Products Page - Test Products Buttons and Add to Cart")
 def logged_in_session(login_page, product_page):
     """Fixture to handle the login process"""
     login_page.open_page()
@@ -49,7 +52,11 @@ def logged_in_session(login_page, product_page):
     print("✅ Products page title verified")
     return product_page
 
-
+@allure.title("Test Products Buttons")
+@allure.description("Test the products buttons selected in products page")
+@allure.severity(allure.severity_level.CRITICAL)
+@allure.story("Test products page buttons")
+@allure.testcase("1")
 def test_products_btns(logged_in_session, product_page):
     """Test the products buttons selected in products page"""
 
@@ -75,7 +82,11 @@ def test_products_btns(logged_in_session, product_page):
             f"✅ Successfully verified button {initial_text} -> {final_text} for {product_name}"
         )
 
-
+@allure.title("Test Add Products to Cart")
+@allure.description("Test adding products to cart")
+@allure.severity(allure.severity_level.CRITICAL)
+@allure.story("Test adding products to cart")
+@allure.testcase("2")
 def test_add_products_to_cart(logged_in_session, product_page, cart_page):
     """Test adding products to cart"""
 
