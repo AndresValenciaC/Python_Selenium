@@ -8,15 +8,24 @@ on:
     branches:
       - test
 
+# Gives the workflow permissions to create gh-pages branch and deploy to GitHub Pages
 permissions:
   contents: write
   pages: write
   id-token: write
   actions: write
+  deployments: write
+
+# Environment for GitHub Pages
+env:
+  PYTHON_VERSION: "3.11"
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +33,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install Chrome
         run: |
@@ -77,13 +86,20 @@ jobs:
           allure_results: allure-results
           allure_report: allure-report
 
-      - name: Deploy report to Github Pages
+      - name: Configure Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v3
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-report
+          path: allure-report
+
+      - name: Deploy to GitHub Pages
+        if: always()
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Merge to main if tests pass
         if: success() && github.ref == 'refs/heads/test'
