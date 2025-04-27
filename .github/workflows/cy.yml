@@ -66,6 +66,36 @@ jobs:
           ruff check .
           pylint $(git ls-files '*.py')
 
-      - name: Run tests with pytest
+      - name: Run tests with pytest and generate Allure report
         run: |
-          pytest
+          pytest --alluredir=./allure-results
+
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+          retention-days: 30
+
+      - name: Generate Allure report
+        if: always()
+        uses: simple-elf/allure-report-action@master
+        with:
+          allure_results: allure-results
+          allure_report: allure-report
+
+      - name: Configure Pages
+        if: always()
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report
+
+      - name: Deploy to GitHub Pages
+        if: always()
+        id: deployment
+        uses: actions/deploy-pages@v4
