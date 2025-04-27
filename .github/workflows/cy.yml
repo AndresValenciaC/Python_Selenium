@@ -70,6 +70,11 @@ jobs:
         run: |
           pytest --alluredir=./allure-results
 
+      - name: Debug: Check allure-results directory
+        if: always()
+        run: |
+          ls -al ./allure-results || echo "allure-results directory not found"
+
       - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4
