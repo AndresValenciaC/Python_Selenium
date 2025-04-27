@@ -1,7 +1,7 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-
+"""genera doc para prueba"""
 class WaitUtilities:
     """Wait utilities"""
 
