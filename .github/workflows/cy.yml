@@ -85,9 +85,15 @@ jobs:
           allure_results: allure-results
           allure_report: allure-report
 
-      - name: Configure Pages
+      - name: Debug: Check allure-report directory
         if: always()
-        uses: actions/configure-pages@v4
+        run: |
+          ls -al ./allure-report || echo "allure-report directory not found"
+
+      - name: Debug: Check temp directory
+        if: always()
+        run: |
+          ls -al /home/runner/work/_temp/ || echo "Temp directory not accessible"
 
       - name: Upload Pages artifact
         if: always()
