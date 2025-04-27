@@ -70,11 +70,6 @@ jobs:
         run: |
           pytest --alluredir=./allure-results
 
-      - name: Debug: Check allure-results directory
-        if: always()
-        run: |
-          ls -al ./allure-results || echo "allure-results directory not found"
-
       - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4
@@ -83,28 +78,12 @@ jobs:
           path: allure-results
           retention-days: 30
 
-      - name: Install Allure CLI
-        run: |
-          wget -q https://github.com/allure-framework/allurectl/releases/download/2.29.0/allurectl_linux_amd64 -O allurectl
-          chmod +x allurectl
-          sudo mv allurectl /usr/local/bin/
-
       - name: Generate Allure report
         if: always()
         uses: simple-elf/allure-report-action@master
         with:
           allure_results: allure-results
           allure_report: allure-report
-
-      - name: Debug: Check allure-report directory
-        if: always()
-        run: |
-          ls -al ./allure-report || echo "allure-report directory not found"
-
-      - name: Debug: Check temp directory
-        if: always()
-        run: |
-          ls -al /home/runner/work/_temp/ || echo "Temp directory not accessible"
 
       - name: Upload Pages artifact
         if: always()
