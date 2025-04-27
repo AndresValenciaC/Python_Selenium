@@ -8,7 +8,6 @@ on:
     branches:
       - test
 
-# Gives the workflow permissions to create gh-pages branch and deploy to GitHub Pages
 permissions:
   contents: write
   pages: write
@@ -16,7 +15,6 @@ permissions:
   actions: write
   deployments: write
 
-# Environment for GitHub Pages
 env:
   PYTHON_VERSION: "3.11"
 
@@ -42,14 +40,15 @@ jobs:
 
       - name: Install ChromeDriver
         run: |
-          CHROME_VERSION=$(google-chrome --version | cut -d ' ' -f 3 | cut -d '.' -f 1)
-          wget -q "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/120.0.6099.109/linux64/chromedriver-linux64.zip"
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
+          CHROMEDRIVER_URL=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_${CHROME_VERSION//./_}" | grep -oP 'https://[^"]+linux64/chromedriver-linux64.zip')
+          wget -q "$CHROMEDRIVER_URL"
           unzip chromedriver-linux64.zip
           sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Cache Python dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
@@ -73,15 +72,15 @@ jobs:
 
       - name: Upload Allure results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: allure-results
           retention-days: 30
 
       - name: Generate Allure report
-        uses: simple-elf/allure-report-action@master
         if: always()
+        uses: simple-elf/allure-report-action@master
         with:
           allure_results: allure-results
           allure_report: allure-report
@@ -100,13 +99,3 @@ jobs:
         if: always()
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Merge to main if tests pass
-        if: success() && github.ref == 'refs/heads/test'
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-          git fetch origin main:main
-          git checkout main
-          git merge --no-ff ${{ github.sha }} -m "Auto-merge test branch to main"
-          git push origin main
