@@ -83,6 +83,12 @@ jobs:
           path: allure-results
           retention-days: 30
 
+      - name: Install Allure CLI
+        run: |
+          wget -q https://github.com/allure-framework/allurectl/releases/download/2.29.0/allurectl_linux_amd64 -O allurectl
+          chmod +x allurectl
+          sudo mv allurectl /usr/local/bin/
+
       - name: Generate Allure report
         if: always()
         uses: simple-elf/allure-report-action@master
