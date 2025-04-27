@@ -1,7 +1,8 @@
+import os
+
+import yaml
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-import yaml
-import os
 
 config_path = os.path.join(os.path.dirname(__file__), "config.yml")
 # Load config from YAML file
