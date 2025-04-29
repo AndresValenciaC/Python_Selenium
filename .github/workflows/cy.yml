@@ -40,13 +40,21 @@ jobs:
 
       - name: Install ChromeDriver
         run: |
-          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-          DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+          et -e
+          sudo apt-get update
+          sudo apt-get install -y jq
+          CHROME_VERSION=$(google-chrome --version | grep -oP "\d+\.\d+\.\d+")
+          DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION" || echo "")
+          if [ -z "$DRIVER_VERSION" ]; then
+            echo "Failed to fetch ChromeDriver version for Chrome $CHROME_VERSION. Trying fallback..."
+            DRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          fi
+          echo "Using ChromeDriver version: $DRIVER_VERSION"
           wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip"
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
-          # Check versions
+          #Chrome Versions
           google-chrome --version
           chromedriver --version
 
