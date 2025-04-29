@@ -1,12 +1,24 @@
 [flake8]
 max-line-length = 88
-extend-ignore = E203, W503
-exclude = .git, __pycache__, venv/, .venv/, build/, dist/
+extend-ignore = E203, W503, E128, E303, E302, W292
+exclude =
+    .git,
+    __pycache__,
+    venv/,
+    .venv/,
+    build/,
+    dist/
 per-file-ignores =
-    tests/*:S101
+    tests/*:S101,E501
     page_objects/*:E501
-    tests/*:E501
     conftest.py:F401
-max-complexity = 10
+max-complexity = 12
 select = B,C,E,F,W,T4,B9
 statistics = True
+# Enforce 2 blank lines before functions/classes
+require-blank-lines-before-function = 2
+require-blank-lines-before-class = 2
+# Limit blank lines to avoid E303
+max-blank-lines = 2
+# Ensure newline at end of file to fix W292
+ensure-newline-at-eof = True

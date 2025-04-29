@@ -4,7 +4,6 @@ from a list of elements
 """
 
 import random
-from selenium.webdriver.common.by import By
 
 
 def random_web_element(driver, locator):
