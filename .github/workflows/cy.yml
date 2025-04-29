@@ -44,22 +44,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq unzip
 
-          # Get Chrome major version
+          # Obtener la versión principal de Chrome
           CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d'.' -f1)
           echo "Chrome major version: $CHROME_VERSION"
 
-          # Get the latest ChromeDriver version for this Chrome major version
+          # Obtener la última versión de ChromeDriver para esta versión de Chrome
           LATEST_DRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_$CHROME_VERSION")
           echo "Latest ChromeDriver version: $LATEST_DRIVER_VERSION"
 
-          # Download ChromeDriver from the new chrome-for-testing CDN
+          # Descargar ChromeDriver desde el nuevo CDN de Chrome para pruebas
           wget -q "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$LATEST_DRIVER_VERSION/linux64/chromedriver-linux64.zip"
           unzip chromedriver-linux64.zip
           sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
           rm -rf chromedriver-linux64 chromedriver-linux64.zip
 
-          # Verify versions
+          # Verificar versiones
           echo "Chrome version:"
           google-chrome --version
           echo "ChromeDriver version:"
@@ -78,8 +78,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Paso adicional para asegurar permisos de chromedriver
       - name: Set chromedriver executable permissions
-        run: chmod +x /usr/local/bin/chromedriver
+        run: |
+          sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Run linting
         run: |
