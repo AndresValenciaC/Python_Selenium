@@ -78,10 +78,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Set chromedriver executable permissions
+        run: chmod +x /usr/local/bin/chromedriver
+
       - name: Run linting
         run: |
           flake8 .
           ruff check .
+
       - name: Run tests with pytest and generate Allure report
         run: |
           pytest --alluredir=./allure-results
