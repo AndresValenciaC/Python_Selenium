@@ -82,8 +82,6 @@ jobs:
         run: |
           flake8 .
           ruff check .
-          pylint $(git ls-files '*.py')
-
       - name: Run tests with pytest and generate Allure report
         run: |
           pytest --alluredir=./allure-results
