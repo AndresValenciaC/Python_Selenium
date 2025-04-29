@@ -58,7 +58,7 @@ def get_driver():
     chrome_options.add_experimental_option("prefs", prefs)
 
     # Create and configure the driver
-    service = Service(executable_path="./drivers/chromedriver")
+    service = Service(executable_path="./drivers/chromedriver.exe")
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # Execute CDP commands to disable features
