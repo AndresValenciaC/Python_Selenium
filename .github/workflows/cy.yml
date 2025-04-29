@@ -42,20 +42,27 @@ jobs:
         run: |
           set -e
           sudo apt-get update
-          sudo apt-get install -y jq
-          CHROME_VERSION=$(google-chrome --version | grep -oP "\d+\.\d+\.\d+")
-          DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION" || echo "")
-          if [ -z "$DRIVER_VERSION" ]; then
-            echo "Failed to fetch ChromeDriver version for Chrome $CHROME_VERSION. Trying fallback..."
-            DRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-          fi
-          echo "Using ChromeDriver version: $DRIVER_VERSION"
-          wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip"
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
+          sudo apt-get install -y jq unzip
+
+          # Get Chrome major version
+          CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d'.' -f1)
+          echo "Chrome major version: $CHROME_VERSION"
+
+          # Get the latest ChromeDriver version for this Chrome major version
+          LATEST_DRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_$CHROME_VERSION")
+          echo "Latest ChromeDriver version: $LATEST_DRIVER_VERSION"
+
+          # Download ChromeDriver from the new chrome-for-testing CDN
+          wget -q "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$LATEST_DRIVER_VERSION/linux64/chromedriver-linux64.zip"
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
-          #Chrome Versions
+          rm -rf chromedriver-linux64 chromedriver-linux64.zip
+
+          # Verify versions
+          echo "Chrome version:"
           google-chrome --version
+          echo "ChromeDriver version:"
           chromedriver --version
 
       - name: Cache Python dependencies
